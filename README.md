@@ -239,33 +239,184 @@ console.log("¿Hay algo más que te quisiera consultar?");
 
 #### function
 
-***parametros***
+Una definición de función (también denominada declaración de función o expresión de función) consta de la palabra clave function, seguida de
 
-***parametros por defecto***
+- El nombre de la función.
+- Una lista de parámetros de la función, entre paréntesis y separados por comas
+- Parametros por defecto, permite declarar valores iniciales en caso de no llamar a la función con algun parametro especifico
+- Las declaraciones de JavaScript que definen la función, encerradas entre llaves, `{ ... }`
 
-***retorno***
+```js
+// Declaración de la función
+function square(number = 2) {
+    // Cuerpo de la función
+  return number * number;
+}
+
+// Una función solo se ejecuta cuando es llamada
+// Llamado a función
+// La salida de la función sera sera 9
+square(3);
+
+// Llamado a función sin enviar parametros
+// La salida sera 4, ya que por defecto definimos el valor 2 para el parametro `number`
+square();
+```
 
 ### Utiliza los objetos y listas de JS, leyendo sus valores y mostrando los resultados en pantalla
 
 #### Array
 
-***map***
+Los arrays son objetos similares a una lista cuyo prototipo proporciona métodos para efectuar operaciones de recorrido y de mutación. Tanto la longitud como el tipo de los elementos de un array son variables.
 
-***filter***
+```js
+const listaFrutas = ['Platano', 'Frutilla', 'Mango'];
+```
 
-***every***
+- map
 
-***some***
+El método map() crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos
 
-***find***
+```js
+const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
 
-***findByIndex***
+// salida [11, 21, 31, 46, 51, 54, 61, 71, 81, 89, 91, 101]
+numeros.map(function(numero) {
+  return numero + 1;
+})
+```
 
-***forEach***
+- filter
 
-***reduce***
+Retora un nuevo Array solo con los elementos que cumplen con la condición data
+
+```js
+const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
+// salida [53, 60, 70, 80, 88, 90, 100]
+numeros.filter(function(numero) {
+  const condicion = numero > 50
+  return condicion;
+})
+```
+
+- every
+
+Retorna `true` solo si todos los elementos del Array cumplen la condicion dada
+
+```js
+const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
+// salida false
+numeros.every(function(numero) {
+  const condicion = numero > 50
+  return condicion;
+})
+
+// salida true
+numeros.every(function(numero) {
+  const condicion = numero > 9
+  return condicion;
+})
+```
+
+- some
+
+Retorna `true` si al menos un elemento cumple con la condición dada
+
+```js
+const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
+// salida true
+numeros.some(function(numero) {
+  const condicion = numero > 50
+  return condicion;
+})
+
+// salida false
+numeros.some(function(numero) {
+  const condicion = numero > 500
+  return condicion;
+})
+```
+
+- find
+
+Retorna el primer elemento que cumpla con la condición dada
+
+```js
+const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
+
+// salida 53
+numeros.find(function(numero) {
+  const condicion = numero > 50
+  return condicion;
+})
+
+// salida undefined
+numeros.find(function(numero) {
+  const condicion = numero > 500
+  return condicion;
+})
+```
+
+- findIndex
+
+Retorna el indice del primer elemento que cumpla con la condición dada
+
+```js
+const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
+
+// retorna el elemento en la posicion 5, recordar que la primera posición en un Array es 0 (primer entero positivo)
+// salida 5
+numeros.findIndex(function(numero) {
+  const condicion = numero > 50
+  return condicion;
+})
+
+// -1 quiere decir que no existe ningun elemento que cumpla con la condición y por lo tanto no existe en el Array
+// salida -1
+numeros.findIndex(function(numero) {
+  const condicion = numero > 500
+  return condicion;
+})
+```
+
+- forEach
+
+Permite recorrer un Array, no retorna ningun valor
+
+```js
+const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
+
+numeros.forEach(function(numero) {
+  // Mostrara en pantalla el numero en cada iteración
+  console.log(numero);
+})
+
+```
+
+- reduce
+
+El método reduce() ejecuta una función reductora sobre cada elemento de un array, devolviendo como resultado un único valor.
+
+valorInicial `opcional`
+Un valor a usar como primer argumento en la primera llamada de la función callback. Si no se proporciona el valorInicial, el primer elemento del array será utilizado y saltado. Llamando a reduce() sobre un array vacío sin un valorInicial lanzará un TypeError.
+
+```js
+const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
+
+// salida 696 la suma de todos los numeros
+numeros.reduce(function(valorAcumulado, valorActual) {
+  const nuevoValor = valorAcumulado + valorActual;
+  return nuevoValor;
+})
+```
 
 #### Object
+
+Un objeto en JavaScript es un contenedor de propiedades, donde una propiedad tiene un nombre `key` y un valor `value`.
+
+El nombre de una propiedad puede ser una cadena de caracteres, incluso una vacía.
+
+El valor de la propiedad puede ser cualquier valor que podamos utilizar en JavaScript, excepto undefined .
 
 ***.keys***
 
