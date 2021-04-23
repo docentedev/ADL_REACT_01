@@ -418,13 +418,39 @@ El nombre de una propiedad puede ser una cadena de caracteres, incluso una vací
 
 El valor de la propiedad puede ser cualquier valor que podamos utilizar en JavaScript, excepto undefined .
 
-***.keys***
+- keys
 
-***.values***
+El método Object.keys() devuelve un array de las propiedades names de un objeto, en el mismo orden como se obtienen en un loop normal
 
-***JSON.parse***
+```js
+const object = {
+  a: 'somestring',
+  b: 42,
+  c: false
+};
 
-***JSON.stringify***
+// salida: Array ['a', 'b', 'c']
+console.log(Object.keys(object));
+```
+
+- values
+
+El método Object.values() devuelve un array con los valores correspondientes a las propiedades enumerables de un objeto.
+
+```js
+const object = {
+  a: 'somestring',
+  b: 42,
+  c: false
+};
+
+// salida: Array ["somestring", 42, false]
+console.log(Object.values(object1));
+```
+
+- JSON.parse
+
+- JSON.stringify
 
 ### Utiliza características  nuevas de ES6 que permiten refactorizar código de javascript para obtener un código más semántico y conciso
 
