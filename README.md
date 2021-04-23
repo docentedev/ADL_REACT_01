@@ -144,8 +144,8 @@ Permite validar si un valor cumple con una condicion dada y hacer algo en caso v
 | `!==` | distinto en valor o en tipo                                                        |
 |  `>`  | Mayor que                                                                          |
 |  `<`  | Menor que                                                                          |
-|  `>=` | Igual o mayor que                                                                  |
-|  `<=` | Menos o igual que                                                                  |
+|  `>=` | Mayor o igual que                                                                  |
+|  `<=` | Menor o igual que                                                                  |
 | `\|\|`| concatena condiciones donde la primera que sea correcta hara la consulta verdadera |
 |  `&&` | concatena condiciones donde todas las condiciones se deben cumplir                 |
 
