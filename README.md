@@ -232,7 +232,7 @@ switch (fruta) {
     console.log('El kilogramo de mangos y papayas cuesta $2.79.');
     break;
   default:
-    console.log('Lo lamentamos, por el momento no disponemos de ' + expr + '.');
+    console.log('Lo lamentamos, por el momento no disponemos de ' + fruta + '.');
 }
 console.log("¿Hay algo más que te quisiera consultar?");
 ```
@@ -614,7 +614,19 @@ sum(...numbers);
 
 Una expresión de función flecha es una alternativa compacta a una expresión de función tradicional, pero es limitada y no se puede utilizar en todas las situaciones.
 
-- Explica conceptos de Programación funcional para obtener un código más seguro
+- plantillas literales
+
+Las plantillas literales son cadenas literales que habilitan el uso de expresiones incrustadas. Con ellas, es posible utilizar cadenas de caracteres de más de una línea, y funcionalidades de interpolación de cadenas de caracteres.
+
+```js
+let a = 5;
+let b = 10;
+console.log('Quince es ' + (a + b) + ' y\nno ' + (2 * a + b) + '.');
+// "Quince es 15 y
+// no 20."
+```
+
+### Explica conceptos de Programación funcional para obtener un código más seguro
 
 - Funciones puras
 
