@@ -16,7 +16,7 @@
   - Click en `New repository`
   - Completar el campo `Repository name`
   - Click en en el boton `Create repository`
-  - copiar texto en la sección `…or push an existing repository from the command line`, similar a
+  - copiar texto en la sección `...or push an existing repository from the command line`, similar a
 
 ```sh
 git remote add origin https://github.com/docentedev/ADL_REACT_01.git
@@ -38,7 +38,7 @@ git push -u origin main
 - En opciones ir a `Terminal > New Terminal`
 - Inicializar como proyecto de git con el comando `git init` (se pueden completar los datos o solo ir presionando `Enter`)
 - Inicializar como proyecto de NPM con el comando `npm init` (se pueden completar los datos o solo ir presionando `Enter`)
-- Crear un repositorio en Github segun lo ya visto pero ahora copiaremos el texto en la sección `…or create a new repository on the command line` similar a
+- Crear un repositorio en Github segun lo ya visto pero ahora copiaremos el texto en la sección `...or create a new repository on the command line` similar a
 
 ```sh
 echo "# ADL_REACT_01" >> README.md
@@ -414,6 +414,32 @@ numeros.reduce(function(valorAcumulado, valorActual) {
 
 Un objeto en JavaScript es un contenedor de propiedades, donde una propiedad tiene un nombre `key` y un valor `value`.
 
+Object de ejemplo
+
+```js
+const object = {
+  a: 'somestring',
+  b: 42,
+  c: false
+};
+```
+
+Objecto de ejemplo con multiples niveles
+
+```js
+const object = {
+  a: 'somestring',
+  b: 42,
+  c: false,
+  propiedadesExtras: {
+    unArray: [1, 2, 3, 4],
+    unTexto: 'CualquierCosa',
+    unNumero: 100.10,
+  },
+};
+```
+
+
 El nombre de una propiedad puede ser una cadena de caracteres, incluso una vacía.
 
 El valor de la propiedad puede ser cualquier valor que podamos utilizar en JavaScript, excepto undefined .
@@ -439,43 +465,171 @@ El método Object.values() devuelve un array con los valores correspondientes a 
 
 ```js
 const object = {
-  a: 'somestring',
+  a: 'loQueSea',
   b: 42,
   c: false
 };
 
-// salida: Array ["somestring", 42, false]
+// salida: Array ["loQueSea", 42, false]
 console.log(Object.values(object1));
 ```
 
 - JSON.parse
 
+El método JSON.parse() analiza una cadena de texto y la transforma a un Objeto JavaScript
+
+```js
+JSON.parse('{}');              // {}
+JSON.parse('true');            // true
+JSON.parse('"foo"');           // "foo"
+JSON.parse('[1, 5, "false"]'); // [1, 5, "false"]
+JSON.parse('null');            // null
+```
+
 - JSON.stringify
+
+El método JSON.stringify() convierte un objeto o valor de JavaScript en una cadena de texto JSON
+
+```js
+console.log(JSON.stringify({ x: 5, y: 6 }));
+// salida "{"x":5,"y":6}"
+
+console.log(JSON.stringify([new Number(3), new String('false'), new Boolean(false)]));
+// salida "[3,"false",false]"
+
+console.log(JSON.stringify({ x: [10, undefined, function(){}, Symbol('')] }));
+// salida "{"x":[10,null,null,null]}"
+
+console.log(JSON.stringify(new Date(2006, 0, 2, 15, 4, 5)));
+// salida ""2006-01-02T15:04:05.000Z""
+```
 
 ### Utiliza características  nuevas de ES6 que permiten refactorizar código de javascript para obtener un código más semántico y conciso
 
-#### Destructuring
+- Destructuring
 
-#### Spread
+La sintaxis de desestructuración es una expresión de JavaScript que permite desempacar valores de arreglos o propiedades de objetos en distintas variables
 
-#### Arrow Function
+```js
+let a;
+let b;
+let rest;
 
-### Explica conceptos de Programación funcional para obtener un código más seguro
+[a, b] = [10, 20];
 
-#### Funciones puras
+console.log(a);
+// salida 10
 
-#### inmutabilidad
+console.log(b);
+// salida 20
 
-#### composición
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+
+console.log(rest);
+// salida Array [30,40,50]
+```
+
+- Spread
+
+El spread operator que incorpora ECMAScript 6 en JavaScript es un operador que simplifica la recogida de valores en una estructura de datos
+
+Convierte un array o un objeto en el conjunto de valores que contiene
+
+```js
+const array1 = [3, 4];
+const arr = [1, 2, ...array1, 5, 6];
+// salida [1, 2, 3, 4, 5, 6]
+```
+
+Unir varios Array en uno
+
+```js
+// Añadir nuevos elementos
+const numbers = [ 1 , 2 , 3]
+const newNumbers = [ ...numbers, 4]
+// salida [1, 2, 3, 4]
+// Sumar arrays
+const sumOfArrays = [ ...numbers, ...newNumbers]
+// salida [1, 2, 3, 1, 2, 3, 4]
+// Clonar arrays
+var originalArr = [22, 3, 68, 0];
+var newArray = [...originalArr];
+// salida [22, 3, 68, 0]
+```
+
+Recoger multiples propiedades
+
+```js
+var arr = [22, 3, 68, 0];
+var max = Math.max(...arr);
+// salida 68
+```
+
+Utilización en Objetos
+
+```js
+const dog = {
+   name: "Lucas",
+   age: 7,
+   breed: "cocker"
+}
+const dogOwner = { ...dog, owner: "Juan", breed: "cocker spaniel"}
+// salida {name: "Lucas", age: 7, breed: "cocker spaniel", owner: "Juan"}
+```
+
+```js
+const dog = {
+   name: "Lucas",
+   age: 7,
+   breed: "cocker"
+}
+const dogLover = {
+  nombre: 'Jaime',
+  mascota: {
+    name: 'Thor',
+    ...dog
+  }
+}
+// salida {"nombre":"Jaime","mascota":{"name":"Lucas","age":7,"breed":"cocker"}}
+```
+
+Utilización como parametros en una función
+
+```js
+function sum(x, y, z) {
+  return x + y + z;
+}
+
+const numbers = [1, 2, 3];
+
+sum(...numbers);
+// salida 6
+
+const numbers2 = [1, 2, 3, 4];
+sum(...numbers);
+// salida 10
+```
+
+- Arrow Function
+
+Una expresión de función flecha es una alternativa compacta a una expresión de función tradicional, pero es limitada y no se puede utilizar en todas las situaciones.
+
+- Explica conceptos de Programación funcional para obtener un código más seguro
+
+- Funciones puras
+
+- inmutabilidad
+
+- composición
 
 ### Modifica el código en javascript para optimizar su funcionamiento y legibilidad
 
-#### Promesas
+- Promesas
 
-#### Await/Async
+- Await/Async
 
-#### try/catch
+- try/catch
 
-#### throw
+- throw
 
-#### Exception
+- Exception
