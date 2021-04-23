@@ -614,9 +614,37 @@ sum(...numbers);
 
 Una expresión de función flecha es una alternativa compacta a una expresión de función tradicional, pero es limitada y no se puede utilizar en todas las situaciones.
 
+```js
+function funcionNormal (a, b) {
+    const r = a + b;
+    return r
+}
+
+const functionAnonima = (a, b) {
+    const r = a + b;
+    return r
+}
+
+const funcionFlecha = (a, b) =>  {
+    const r = a + b;
+    return r
+}
+
+const funcionFlechaUnParametro = a =>  {
+    const r = a + a;
+    return r
+}
+
+const funcionFlechaUnParametroUnaLinea = a =>  a + a;
+
+const funcionFlechaDosParametrosUnaLinea = (a, b) =>  a + b;
+```
+
 - plantillas literales
 
 Las plantillas literales son cadenas literales que habilitan el uso de expresiones incrustadas. Con ellas, es posible utilizar cadenas de caracteres de más de una línea, y funcionalidades de interpolación de cadenas de caracteres.
+
+Antes de las plantillas literales
 
 ```js
 let a = 5;
@@ -626,13 +654,75 @@ console.log('Quince es ' + (a + b) + ' y\nno ' + (2 * a + b) + '.');
 // no 20."
 ```
 
+Con plantillas literales
+
+```js
+let a = 5;
+let b = 10;
+console.log(`Quince es ${a + b} y
+no ${2 * a + b}.`);
+// "Quince es 15 y
+// no 20."
+```
+
 ### Explica conceptos de Programación funcional para obtener un código más seguro
 
 - Funciones puras
 
+Una forma muy rápida y poco precisa de definir a las Funciones Puras sería decir que son aquellas que operan utilizando solo los parámetros de entrada sin recurrir a ningún otro elemento fuera de ellas.
+
+```js
+// función pura
+function funcionPura (a, b) {
+    const r = a + b;
+    return r
+}
+
+// función no pura
+const c = 10;
+
+function funcionNoPura (a) {
+    const r = a + c;
+    return r
+}
+```
+
 - inmutabilidad
 
+Un valor inmutable es un valor que no se puede cambiar luego de ser definido, se puede modificar pero debe ser en un objeto diferente.
+
 - composición
+
+Una vez que tenemos nuestras funciones puras, la composición nos permite aplicar dichas funciones en cadena. 
+
+```js
+const original = [80, 3, 14, 22, 30];
+
+const result = original
+    .filter((value) => value%2 === 0)
+    .filter((value) => value > 20)
+    .reduce((accumulator, value) => accumulator + value);
+
+console.log(result); // 132
+```
+
+Ejemplo con le mismo comportamiento pero reutilizable
+
+```js
+const original = [80, 3, 14, 22, 30];
+
+const filterOnlyPairElements = (values) => values.filter((value) => value%2 === 0);
+const filterGreaterThan = (values) => (max) => values.filter((value) => value > max);
+const sumAllValues = (values) => values.reduce((accumulator, value) => accumulator + value);
+
+const result = sumAllValues(
+    filterGreaterThan(
+        filterOnlyPairElements(original)
+    )(20)
+);
+
+console.log(result); // 132
+````
 
 ### Modifica el código en javascript para optimizar su funcionamiento y legibilidad
 
