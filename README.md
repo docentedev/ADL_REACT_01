@@ -452,7 +452,7 @@ const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
 numeros.reduce(function (valorAcumulado, valorActual) {
   const nuevoValor = valorAcumulado + valorActual;
   return nuevoValor;
-});
+}, 0);
 ```
 
 #### Object
