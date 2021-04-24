@@ -111,14 +111,14 @@ Definir un valor de tal manera que el este no sea modificable
 - puedes contener cualquier tipo de dato
 
 ```js
-const primerNombre = "Aragon";
-const titulo = "Rey de Gondor";
-const edad = 200;
+const primerNombre = "Juan";
+const titulo = "Ingeniero";
+const edad = 40;
 const esHuman = true;
 const esMiedoso = false;
 
 // Si intentamos cambiar un valor el programa nos dara un error pues no es posible modificar el valor
-titulo = "Montaraz"; // TypeError: Assignment to constant variable.
+titulo = "Arquitecto"; // TypeError: Assignment to constant variable.
 ```
 
 ***let***
@@ -280,7 +280,7 @@ El método map() crea un nuevo array con los resultados de la llamada a la funci
 ```js
 const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
 
-// salida [11, 21, 31, 46, 51, 54, 61, 71, 81, 89, 91, 101]
+// salida: [11, 21, 31, 46, 51, 54, 61, 71, 81, 89, 91, 101]
 numeros.map(function(numero) {
   return numero + 1;
 })
@@ -292,7 +292,7 @@ Retora un nuevo Array solo con los elementos que cumplen con la condición data
 
 ```js
 const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
-// salida [53, 60, 70, 80, 88, 90, 100]
+// salida: [53, 60, 70, 80, 88, 90, 100]
 numeros.filter(function(numero) {
   const condicion = numero > 50
   return condicion;
@@ -305,13 +305,13 @@ Retorna `true` solo si todos los elementos del Array cumplen la condicion dada
 
 ```js
 const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
-// salida false
+// salida: false
 numeros.every(function(numero) {
   const condicion = numero > 50
   return condicion;
 })
 
-// salida true
+// salida: true
 numeros.every(function(numero) {
   const condicion = numero > 9
   return condicion;
@@ -324,13 +324,13 @@ Retorna `true` si al menos un elemento cumple con la condición dada
 
 ```js
 const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
-// salida true
+// salida: true
 numeros.some(function(numero) {
   const condicion = numero > 50
   return condicion;
 })
 
-// salida false
+// salida: false
 numeros.some(function(numero) {
   const condicion = numero > 500
   return condicion;
@@ -344,13 +344,13 @@ Retorna el primer elemento que cumpla con la condición dada
 ```js
 const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
 
-// salida 53
+// salida: 53
 numeros.find(function(numero) {
   const condicion = numero > 50
   return condicion;
 })
 
-// salida undefined
+// salida: undefined
 numeros.find(function(numero) {
   const condicion = numero > 500
   return condicion;
@@ -365,14 +365,14 @@ Retorna el indice del primer elemento que cumpla con la condición dada
 const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
 
 // retorna el elemento en la posicion 5, recordar que la primera posición en un Array es 0 (primer entero positivo)
-// salida 5
+// salida: 5
 numeros.findIndex(function(numero) {
   const condicion = numero > 50
   return condicion;
 })
 
 // -1 quiere decir que no existe ningun elemento que cumpla con la condición y por lo tanto no existe en el Array
-// salida -1
+// salida: -1
 numeros.findIndex(function(numero) {
   const condicion = numero > 500
   return condicion;
@@ -403,7 +403,7 @@ Un valor a usar como primer argumento en la primera llamada de la función callb
 ```js
 const numeros = [10, 20, 30, 45, 50, 53, 60, 70, 80, 88, 90, 100];
 
-// salida 696 la suma de todos los numeros
+// salida: 696 la suma de todos los numeros
 numeros.reduce(function(valorAcumulado, valorActual) {
   const nuevoValor = valorAcumulado + valorActual;
   return nuevoValor;
@@ -439,7 +439,6 @@ const object = {
 };
 ```
 
-
 El nombre de una propiedad puede ser una cadena de caracteres, incluso una vacía.
 
 El valor de la propiedad puede ser cualquier valor que podamos utilizar en JavaScript, excepto undefined .
@@ -455,7 +454,7 @@ const object = {
   c: false
 };
 
-// salida: Array ['a', 'b', 'c']
+// salida:: Array ['a', 'b', 'c']
 console.log(Object.keys(object));
 ```
 
@@ -470,7 +469,7 @@ const object = {
   c: false
 };
 
-// salida: Array ["loQueSea", 42, false]
+// salida:: Array ["loQueSea", 42, false]
 console.log(Object.values(object1));
 ```
 
@@ -492,16 +491,16 @@ El método JSON.stringify() convierte un objeto o valor de JavaScript en una cad
 
 ```js
 console.log(JSON.stringify({ x: 5, y: 6 }));
-// salida "{"x":5,"y":6}"
+// salida: "{"x":5,"y":6}"
 
 console.log(JSON.stringify([new Number(3), new String('false'), new Boolean(false)]));
-// salida "[3,"false",false]"
+// salida: "[3,"false",false]"
 
 console.log(JSON.stringify({ x: [10, undefined, function(){}, Symbol('')] }));
-// salida "{"x":[10,null,null,null]}"
+// salida: "{"x":[10,null,null,null]}"
 
 console.log(JSON.stringify(new Date(2006, 0, 2, 15, 4, 5)));
-// salida ""2006-01-02T15:04:05.000Z""
+// salida: ""2006-01-02T15:04:05.000Z""
 ```
 
 ### Utiliza características  nuevas de ES6 que permiten refactorizar código de javascript para obtener un código más semántico y conciso
@@ -518,15 +517,15 @@ let rest;
 [a, b] = [10, 20];
 
 console.log(a);
-// salida 10
+// salida: 10
 
 console.log(b);
-// salida 20
+// salida: 20
 
 [a, b, ...rest] = [10, 20, 30, 40, 50];
 
 console.log(rest);
-// salida Array [30,40,50]
+// salida: Array [30,40,50]
 ```
 
 - Spread
@@ -538,7 +537,7 @@ Convierte un array o un objeto en el conjunto de valores que contiene
 ```js
 const array1 = [3, 4];
 const arr = [1, 2, ...array1, 5, 6];
-// salida [1, 2, 3, 4, 5, 6]
+// salida: [1, 2, 3, 4, 5, 6]
 ```
 
 Unir varios Array en uno
@@ -547,14 +546,14 @@ Unir varios Array en uno
 // Añadir nuevos elementos
 const numbers = [ 1 , 2 , 3]
 const newNumbers = [ ...numbers, 4]
-// salida [1, 2, 3, 4]
+// salida: [1, 2, 3, 4]
 // Sumar arrays
 const sumOfArrays = [ ...numbers, ...newNumbers]
-// salida [1, 2, 3, 1, 2, 3, 4]
+// salida: [1, 2, 3, 1, 2, 3, 4]
 // Clonar arrays
 var originalArr = [22, 3, 68, 0];
 var newArray = [...originalArr];
-// salida [22, 3, 68, 0]
+// salida: [22, 3, 68, 0]
 ```
 
 Recoger multiples propiedades
@@ -562,7 +561,7 @@ Recoger multiples propiedades
 ```js
 var arr = [22, 3, 68, 0];
 var max = Math.max(...arr);
-// salida 68
+// salida: 68
 ```
 
 Utilización en Objetos
@@ -574,7 +573,7 @@ const dog = {
    breed: "cocker"
 }
 const dogOwner = { ...dog, owner: "Juan", breed: "cocker spaniel"}
-// salida {name: "Lucas", age: 7, breed: "cocker spaniel", owner: "Juan"}
+// salida: {name: "Lucas", age: 7, breed: "cocker spaniel", owner: "Juan"}
 ```
 
 ```js
@@ -590,7 +589,7 @@ const dogLover = {
     ...dog
   }
 }
-// salida {"nombre":"Jaime","mascota":{"name":"Lucas","age":7,"breed":"cocker"}}
+// salida: {"nombre":"Jaime","mascota":{"name":"Lucas","age":7,"breed":"cocker"}}
 ```
 
 Utilización como parametros en una función
@@ -603,11 +602,11 @@ function sum(x, y, z) {
 const numbers = [1, 2, 3];
 
 sum(...numbers);
-// salida 6
+// salida: 6
 
 const numbers2 = [1, 2, 3, 4];
 sum(...numbers);
-// salida 10
+// salida: 10
 ```
 
 - Arrow Function
@@ -693,7 +692,7 @@ Un valor inmutable es un valor que no se puede cambiar luego de ser definido, se
 
 - composición
 
-Una vez que tenemos nuestras funciones puras, la composición nos permite aplicar dichas funciones en cadena. 
+Una vez que tenemos nuestras funciones puras, la composición nos permite aplicar dichas funciones en cadena
 
 ```js
 const original = [80, 3, 14, 22, 30];
@@ -711,7 +710,7 @@ Ejemplo con le mismo comportamiento pero reutilizable
 ```js
 const original = [80, 3, 14, 22, 30];
 
-const filterOnlyPairElements = (values) => values.filter((value) => value%2 === 0);
+const filterOnlyPairElements = (values) => values.filter((value) => value %2 === 0);
 const filterGreaterThan = (values) => (max) => values.filter((value) => value > max);
 const sumAllValues = (values) => values.reduce((accumulator, value) => accumulator + value);
 
@@ -721,17 +720,169 @@ const result = sumAllValues(
     )(20)
 );
 
-console.log(result); // 132
-````
+console.log(result) // 132
+```
 
 ### Modifica el código en javascript para optimizar su funcionamiento y legibilidad
 
+- Simulación de código asíncrono con `callback`
+
+Una función de callback es una función que se pasa a otra función como un argumento, que luego se invoca dentro de la función externa para completar algún tipo de rutina o acción.
+
+```js
+const getName = (callback) => {
+  setTimeout(() => {
+    callback('Juan')
+  }, 500)
+}
+
+const getAge = (callback) => {
+  setTimeout(() => {
+    callback(33)
+  }, 500)
+}
+
+const main = () => {
+  getName((name) => {
+    getAge((age) => {
+      const resultado = `${name} tiene ${age}`
+      console.log(resultado)
+    })
+  })
+} 
+
+main()
+
+// salida: Juan tiene 33
+```
+
 - Promesas
+
+El objeto Promise (Promesa) es usado para computaciones asíncronas. Una promesa representa un valor que puede estar disponible ahora, en el futuro, o nunca.
+
+```js
+const getName = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Juan')
+    }, 500)
+  })
+}
+
+const getAge = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(33)
+    }, 500)
+  })
+}
+
+const main = () => {
+  const p1 = getName()
+  const p2 = getAge()
+
+  Promise.all([p1, p2]).then(values => {
+    const resultado = `${values[0]} tiene ${values[1]}`
+    console.log(resultado)
+  })
+} 
+
+main()
+// salida: Juan tiene 33
+```
 
 - Await/Async
 
+```js
+function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const getName = async () => {
+  await timeout(500)
+  return 'Juan'
+}
+
+const getAge = async () => {
+  await timeout(500)
+  return 33
+}
+
+const main = async () => {
+  const p1 = await getName()
+  const p2 = await getAge()
+  const resultado = `${p1} tiene ${p2}`
+  console.log(resultado)
+} 
+
+// en este caso la función al ser asincrona se debe llamar dentron de una funcion asincrona
+(async ()=>{
+  await main()
+})()
+// salida: Juan tiene 33
+
+// la otra solucion es resolver la funcion como una promesa
+main().then()
+// salida: Juan tiene 33
+```
+
 - try/catch
 
-- throw
+La declaración try...catch señala un bloque de instrucciones a intentar (try), y especifica una respuesta si se produce una excepción (catch).
 
-- Exception
+```js
+try {
+  nonExistentFunction();
+} catch (error) {
+  console.error(error);
+  // expected output: ReferenceError: nonExistentFunction is not defined
+  // El mensaje podria variar dependiendo del navegador
+}
+
+const logMyErrors = (e) => console.info(e)
+
+try {
+    myroutine();  // puede lanzar tres tipos de excepciones
+} catch (e) {
+    if (e instanceof TypeError) {
+        // sentencias para manejar excepciones TypeError
+        console.info(e)
+    } else if (e instanceof RangeError) {
+        // sentencias para manejar excepciones RangeError
+        console.info(e)
+    } else if (e instanceof EvalError) {
+        // sentencias para manejar excepciones EvalError
+        console.info(e)
+    } else if (e instanceof ReferenceError) {
+        // sentencias para manejar excepciones ReferenceError
+        console.info(e)
+    } else {
+       // sentencias para manejar cualquier excepción no especificada
+       logMyErrors(e); // pasa el objeto de la excepción al manejador de errores
+    }
+}
+```
+
+- throw/new Error
+
+```js
+try {
+   throw "myException"; // genera una excepción
+}
+catch (e) {
+   // sentencias para manejar cualquier excepción
+   logMyErrors(e); // pasa el objeto de la excepción al manejador de errores
+}
+```
+
+Genarando errores con mensaje
+
+```js
+try {
+  throw new Error('Error de prueba')
+} catch(e) {
+  console.log(e.message)
+}
+
+// salida: Error de prueba
+```
