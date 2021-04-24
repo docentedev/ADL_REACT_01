@@ -66,14 +66,17 @@ const filtroProductosConExistencias = (fruta) => {
     return fruta.existencia > 0
 }
 
-const duplicarPrecioProductosUnaExistencia = (fruta) => {
-    if (fruta.existencia === 1) {
-        return {
-            ...fruta,
-            precio: fruta.precio * 2,
+const duplicarPrecioProductosUnaExistencia = (pro) => {
+    if (pro.existencia === 1) {
+        const nuevoPrecio = pro.precio * 2
+        const producto = {
+            ...pro,
+            precio: nuevoPrecio,
         }
+        imprimir('Subiendo el precio a:', producto)
+        return producto
     }
-    return fruta
+    return pro
 }
 
 const comprarProducto = async (nombreProducto, cantidad, productos) => {
@@ -83,7 +86,6 @@ const comprarProducto = async (nombreProducto, cantidad, productos) => {
     await timeout(1000)
 
     const producto = productos.find((prod) => prod.nombre === nombreProducto)
-    const productoIndice = productos.findIndex((prod) => prod.nombre === nombreProducto)
     try {
         if (!producto) {
             throw new Error(`No existe el producto: ${nombreProducto}`)
