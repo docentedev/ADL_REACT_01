@@ -153,6 +153,10 @@ const main = async () => {
 
     imprimir('\n> Actualmente existen los siguientes productos:\n', nuevaListaProductos)
     
+
+    const hayExistenciaDeTodosLosProductos = productos.every(p => p.existencia > 0);
+    console.log(hayExistenciaDeTodosLosProductos ? 'Todos los productos aun tiene existencias' : 'Algunos Productos ya no tiene existencias');
+
 }
 
 // Iniciar código asincrono
